@@ -21,8 +21,9 @@ class Conversation:
     def command(self, line, game, cmd):
         if cmd == "commands" or cmd == "help":
             self.send_reply(line, "Supported commands: !wait, !name, !howto, !eval, !queue, !creator")
-         elif cmd == "wait":
-            self.send_reply(line, "No cannot sorry .")
+        elif cmd == "wait" and game.is_abortable():
+            game.ping(60, 120)
+            self.send_reply(line, "Waiting 1 seconds...")
         elif cmd == "name":
             name = game.me.name
             self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
