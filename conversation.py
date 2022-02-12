@@ -20,10 +20,9 @@ class Conversation:
 
     def command(self, line, game, cmd):
         if cmd == "commands" or cmd == "help":
-            self.send_reply(line, "Supported commands: !wait, !name, !howto, !eval, !queue")
-        elif cmd == "wait" and game.is_abortable():
-            game.ping(60, 120)
-            self.send_reply(line, "Waiting 60 seconds...")
+            self.send_reply(line, "Supported commands: !wait, !name, !howto, !eval, !queue, !creator")
+         elif cmd == "wait":
+            self.send_reply(line, "No cannot sorry .")
         elif cmd == "name":
             name = game.me.name
             self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
@@ -34,6 +33,8 @@ class Conversation:
             self.send_reply(line, ", ".join(stats))
         elif cmd == "eval":
             self.send_reply(line, "I don't tell that to my opponent, sorry.")
+        elif cmd == "creater":
+            self.send_reply(line, "by @HeroReborn_Utsa .")
         elif cmd == "queue":
             if self.challengers:
                 challengers = ", ".join(["@" + challenger.challenger_name for challenger in reversed(self.challengers)])
