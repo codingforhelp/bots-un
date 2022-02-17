@@ -233,7 +233,7 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
         def __init__(self, room):
             self.room = room
     opponent = game.black.name if game.white.name == user_profile["username"] else game.white.name
-    conversation.send_reply(SendLine('player'), f'Welcome {opponent}  to one of the best bot of lichess! Made by @HeroReborn_Utsa !')
+    conversation.send_reply(SendLine('player'), f'Welcome to the Legend Bot made by Revolute Team !')
     conversation.send_reply(SendLine('spectator'), f'Welcome to my game spectators!')
     
     logger.info("+++ {}".format(game))
@@ -307,7 +307,7 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
         except StopIteration:
             break
     
-    conversation.send_reply(SendLine('player'), f'Good game,Thank you !')
+    conversation.send_reply(SendLine('player'), f'That was a great game , Hope we meet soon ! !')
     conversation.send_reply(SendLine('spectator'), f'Thanks for watch my game !')
 
     engine.stop()
